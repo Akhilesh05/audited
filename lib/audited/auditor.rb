@@ -111,6 +111,7 @@ module Audited
         return [] if audits.empty?
         revisions = []
         for i in 0..audits.length-1
+          audit = audits[i]
           revisions << audit.revision(audits.slice(0, i+1))
         end
         revisions
