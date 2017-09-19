@@ -108,6 +108,7 @@ module Audited
       #
       def revisions(from_version = 1)
         audits = self.audits.from_version(from_version)
+        audits = audits.to_a
         return [] if audits.empty?
         revisions = []
         for i in 0..audits.length-1
