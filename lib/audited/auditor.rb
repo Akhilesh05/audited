@@ -111,7 +111,7 @@ module Audited
         return [] if audits.empty?
         revisions = []
         audits.each do |audit|
-          revisions << audit.revision
+          revisions << audit.revision(audits)
         end
         revisions
       end
