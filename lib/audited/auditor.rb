@@ -108,13 +108,10 @@ module Audited
       #
       def revisions(from_version = 1)
         audits = self.audits.from_version(from_version)
-        for audit in audits
-          puts audit.version
-        end
         return [] if audits.empty?
         revisions = []
-        audits.each do |audit|
-          revisions << audit.revision(audits)
+        for i in 0..audits.length-1
+          revisions << audit.revision(audits.slice(0, i+1))
         end
         revisions
       end
