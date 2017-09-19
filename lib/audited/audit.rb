@@ -67,6 +67,8 @@ module Audited
     end
     
     def revision audits
+      p ancestors
+      puts ancestors
       clazz = auditable_type.constantize
       (clazz.find_by_id(auditable_id) || clazz.new).tap do |m|
         self.class.assign_revision_attributes(m, self.class.reconstruct_attributes(audits).merge(version: version))
